@@ -139,18 +139,73 @@ namespace Demo03
             //    Console.WriteLine($"Department Id Name : {emp01.DepartmentId}");
             //    Console.WriteLine($"Department Name : {emp01.EmployeeDepartment?.DeptName}");//Related Data
 
-                
+
             //}
 
-            var Dep01=dbcontext.Departments.FirstOrDefault(d=>d.DeptId==1);
-            if (Dep01 is not null)
-            {
-                Console.WriteLine(Dep01.DeptName);
-                Console.WriteLine(Dep01.DateOfCreation);
+            //var Dep01=dbcontext.Departments.FirstOrDefault(d=>d.DeptId==1);
+            //if (Dep01 is not null)
+            //{
+            //    Console.WriteLine(Dep01.DeptName);
+            //    Console.WriteLine(Dep01.DateOfCreation);
 
-                foreach(var emp in Dep01.Employees)
-                    Console.WriteLine($"---------{emp.EmpName}");
-            }
+            //    foreach(var emp in Dep01.Employees)
+            //        Console.WriteLine($"---------{emp.EmpName}");
+            //}
+            #endregion
+
+            #endregion
+
+            #region Joins Operators
+
+            #region Inner Join -Join()
+
+            #region Departments That Have Employees
+            //var result = dbcontext.Departments.Join(dbcontext.Employees, d => d.DeptId, e => e.DepartmentId,
+            //                                                                                        (d, e) => new
+            //                                                                                        {
+            //                                                                                            EmployeeId=e.ÈmpId,
+            //                                                                                            EmployeeName=e.EmpName,
+            //                                                                                            DepartmentId=d.DeptId,
+            //                                                                                            DepartmentName=d.DeptName
+            //                                                                                        });
+
+            //var result = from D in dbcontext.Departments
+            //             join e in dbcontext.Employees
+            //             on D.DeptId equals e.DepartmentId
+            //             select new 
+            //             {
+            //                 EmployeeId = e.ÈmpId,
+            //                 EmployeeName = e.EmpName,
+            //                 DepartmentId = D.DeptId,
+            //                 DepartmentName = D.DeptName
+            //             };
+
+
+            //foreach (var item in result)
+            //    Console.WriteLine(item);
+            #endregion
+
+            #region Department Maneger
+            //var result = from e in dbcontext.Employees
+            //             join d in dbcontext.Departments
+            //             on e.ÈmpId equals d.ManegerId
+            //             select new 
+            //             {
+            //                 //DepartmentId=d.DeptId,
+            //                 DepartmentName=d.DeptName,
+            //                 ManegerId=d.ManegerId,
+            //                 ManegerName=e.EmpName,
+
+
+            //             };
+            //foreach (var item in result)
+            //    Console.WriteLine(item);
+
+                                    
+
+
+            #endregion
+
             #endregion
 
             #endregion

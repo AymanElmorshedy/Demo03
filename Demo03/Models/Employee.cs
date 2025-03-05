@@ -28,6 +28,6 @@ namespace Demo03.Models
         [InverseProperty(nameof(Department.Employees))]
         public virtual Department EmployeeDepartment { get; set; }
         [ForeignKey(nameof(EmployeeDepartment))]
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
     }
 }
