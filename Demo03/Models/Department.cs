@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+
+[assembly:InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
 namespace Demo03.Models
 {
@@ -16,11 +19,11 @@ namespace Demo03.Models
         public DateOnly DateOfCreation { get; set; }
         public int Serial { get; set; }
         [InverseProperty(nameof(Employee.ManegedDepartment))]
-        public Employee Manager { get; set; }
+        public virtual Employee Manager { get; set; }
         [ForeignKey(nameof(Manager))]
         public int? ManegerId { get; set; }
         [InverseProperty(nameof(Employee.EmployeeDepartment))]
-        public ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
 
     }
 }
