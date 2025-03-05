@@ -13,21 +13,21 @@ namespace Demo03
 
             #region Data Seeding
             #region Manual Data Seeding
-            Department department01 = new Department()
-            {
-                DeptName = "HR",
-                DateOfCreation = new DateOnly(2024, 7, 25)
-            };
-            dbcontext.Add(department01);
-            dbcontext.SaveChanges();
+            //Department department01 = new Department()
+            //{
+            //    DeptName = "HR",
+            //    DateOfCreation = new DateOnly(2024, 7, 25)
+            //};
+            //dbcontext.Add(department01);
+            //dbcontext.SaveChanges();
 
-            List<Department> departments = new List<Department>()
-            {
-                new Department(){DeptName="IT",DateOfCreation=new DateOnly(2024,5,23) },
-                new Department(){DeptName="Devolopment",DateOfCreation=new DateOnly(2023,4,30) }
-            };
-            dbcontext.AddRange(departments);
-            dbcontext.SaveChanges();
+            //List<Department> departments = new List<Department>()
+            //{
+            //    new Department(){DeptName="IT",DateOfCreation=new DateOnly(2024,5,23) },
+            //    new Department(){DeptName="Devolopment",DateOfCreation=new DateOnly(2023,4,30) }
+            //};
+            //dbcontext.AddRange(departments);
+            //dbcontext.SaveChanges();
             #endregion
 
             #region Dynamic Data Seeding
@@ -55,15 +55,15 @@ namespace Demo03
             #endregion
 
             #region Eager Loading
-            //var emp01WithDepartment = dbcontext.Employees.Include(e=>e.EmployeeDepartment).FirstOrDefault(e => e.ÈmpId == 1);
+            var emp01WithDepartment = dbcontext.Employees.Include(e => e.EmployeeDepartment).FirstOrDefault(e => e.ÈmpId == 1);
 
-            //if (emp01WithDepartment is not null)
-            //{
-            //    Console.WriteLine($"Employee Name : {emp01WithDepartment.EmpName}");
-            //    Console.WriteLine($"Department Id  : {emp01WithDepartment.DepartmentId}");
-            //    Console.WriteLine($"Department Name : {emp01WithDepartment.EmployeeDepartment?.DeptName}");//Related Data Load Eager Loading
+            if (emp01WithDepartment is not null)
+            {
+                Console.WriteLine($"Employee Name : {emp01WithDepartment.EmpName}");
+                Console.WriteLine($"Department Id  : {emp01WithDepartment.DepartmentId}");
+                Console.WriteLine($"Department Name : {emp01WithDepartment.EmployeeDepartment?.DeptName}");//Related Data Load Eager Loading
 
-            //}
+            }
 
             //var Emp01WithManegedDepartment = dbcontext.Employees.Include(e => e.ManegedDepartment)
             //                                                                                    .FirstOrDefault(e => e.ÈmpId == 1);
