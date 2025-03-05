@@ -13,21 +13,21 @@ namespace Demo03
 
             #region Data Seeding
             #region Manual Data Seeding
-            //Department department01 = new Department()
-            //{
-            //    DeptName = "HR",
-            //    DateOfCreation= new DateOnly(2024,7,25)
-            //};
-            //dbcontext.Add(department01);
-            //dbcontext.SaveChanges();
+            Department department01 = new Department()
+            {
+                DeptName = "HR",
+                DateOfCreation = new DateOnly(2024, 7, 25)
+            };
+            dbcontext.Add(department01);
+            dbcontext.SaveChanges();
 
-            //List<Department> departments = new List<Department>()
-            //{
-            //    new Department(){DeptName="IT",DateOfCreation=new DateOnly(2024,5,23) },
-            //    new Department(){DeptName="Devolopment",DateOfCreation=new DateOnly(2023,4,30) }
-            //};
-            //dbcontext.AddRange(departments);
-            //dbcontext.SaveChanges();
+            List<Department> departments = new List<Department>()
+            {
+                new Department(){DeptName="IT",DateOfCreation=new DateOnly(2024,5,23) },
+                new Department(){DeptName="Devolopment",DateOfCreation=new DateOnly(2023,4,30) }
+            };
+            dbcontext.AddRange(departments);
+            dbcontext.SaveChanges();
             #endregion
 
             #region Dynamic Data Seeding
@@ -98,7 +98,7 @@ namespace Demo03
             //   foreach (var item in emp01WithDepartment)
             //        Console.WriteLine(item);
             //        //Console.WriteLine($"Emp Name={item.EmpName} :: Department Name={item.EmployeeDepartment?.DeptName}");
-              
+
 
             //}
             #endregion
