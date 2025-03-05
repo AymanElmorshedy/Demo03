@@ -368,7 +368,7 @@ namespace Demo03
 
             //foreach(var item in result)
             //    Console.WriteLine(item);
-            
+
             //foreach (var item in result)
             //{
             //    Console.WriteLine($"{item.Employee.EmpName}");
@@ -380,6 +380,24 @@ namespace Demo03
             #endregion
 
 
+            #endregion
+
+            #region Cross Join
+            //var result = from e in dbcontext.Employees
+            //             from d in dbcontext.Departments
+            //             select new
+            //             {
+            //                 e.EmpName,
+            //                 d.DeptName,
+            //             };
+           var result = dbcontext.Employees.SelectMany(e => dbcontext.Departments.Select(D => new
+            {
+               e.EmpName,
+               D.DeptName,
+            }));
+
+            foreach(var item in result)
+                Console.WriteLine(item);
             #endregion
 
 
