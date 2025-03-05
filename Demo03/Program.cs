@@ -55,15 +55,15 @@ namespace Demo03
             #endregion
 
             #region Eager Loading
-            var emp01WithDepartment = dbcontext.Employees.Include(e => e.EmployeeDepartment).FirstOrDefault(e => e.ÈmpId == 1);
+            //var emp01WithDepartment = dbcontext.Employees.Include(e => e.EmployeeDepartment).FirstOrDefault(e => e.ÈmpId == 1);
 
-            if (emp01WithDepartment is not null)
-            {
-                Console.WriteLine($"Employee Name : {emp01WithDepartment.EmpName}");
-                Console.WriteLine($"Department Id  : {emp01WithDepartment.DepartmentId}");
-                Console.WriteLine($"Department Name : {emp01WithDepartment.EmployeeDepartment?.DeptName}");//Related Data Load Eager Loading
+            //if (emp01WithDepartment is not null)
+            //{
+            //    Console.WriteLine($"Employee Name : {emp01WithDepartment.EmpName}");
+            //    Console.WriteLine($"Department Id  : {emp01WithDepartment.DepartmentId}");
+            //    Console.WriteLine($"Department Name : {emp01WithDepartment.EmployeeDepartment?.DeptName}");//Related Data Load Eager Loading
 
-            }
+            //}
 
             //var Emp01WithManegedDepartment = dbcontext.Employees.Include(e => e.ManegedDepartment)
             //                                                                                    .FirstOrDefault(e => e.ÈmpId == 1);
@@ -101,6 +101,33 @@ namespace Demo03
 
 
             //}
+            #endregion
+
+            #region Explcit-Loading
+            #region Exampel 01
+            //var emp01WithDepartment = dbcontext.Employees.FirstOrDefault(e=>e.ÈmpId==1);
+            //if (emp01WithDepartment is not null)
+            //{
+            //    Console.WriteLine($"Employee Name : {emp01WithDepartment.EmpName}");
+            //    Console.WriteLine($"Department Id  : {emp01WithDepartment.DepartmentId}");
+
+            //    dbcontext.Entry( emp01WithDepartment ).Reference(e=>e.EmployeeDepartment).Load();
+
+            //    Console.WriteLine($"Department Name : {emp01WithDepartment.EmployeeDepartment?.DeptName}");//Related Data Load Explcit Loading
+
+            //} 
+            #endregion
+
+            #region Exampel 02
+            //var dep01 = dbcontext.Departments.FirstOrDefault(d => d.DeptId == 1);
+            //if (dep01 is not null)
+            //{
+            //    Console.WriteLine($"Depatment Name :{dep01.DeptName}");
+            //    dbcontext.Entry(dep01).Collection(d => d.Employees).Query().Where(e=>e.Age>25).Load();
+            //    foreach(var item in dep01.Employees)
+            //        Console.WriteLine(item.EmpName);
+            //}
+            #endregion
             #endregion
 
             #endregion
