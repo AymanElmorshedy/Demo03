@@ -2,6 +2,7 @@
 using Demo03.Dbcontexts;
 using Demo03.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Demo03
 {
@@ -259,6 +260,125 @@ namespace Demo03
             //}
 
             #endregion
+
+            #endregion
+
+            #region Left Outer Join
+            #region Left-join Is Not working
+            //var result = dbcontext.Departments.LeftJoin(dbcontext.Employees
+            //    , D => D.DeptId
+            //    , e => e.DepartmentId
+            //    , (D, e) => new { Dept = D, employee = e });
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Dept.DeptName);
+
+            //} 
+            #endregion
+
+            #region Department Left Outer Join With Employees
+            #region Exambel 01
+            //var result = dbcontext.Departments.GroupJoin(dbcontext.Employees
+            //    , d => d.DeptId
+            //    , e => e.DepartmentId,
+            //    (d, e) => new
+            //    {
+            //        Department = d,
+            //        Employees = e
+            //    }).Select(r=>r.Department);
+
+            //var result = from d in dbcontext.Departments
+            //           join e in dbcontext.Employees
+            //           on d.DeptId equals e.DepartmentId into EmployeesGroup
+            //           select new
+            //           {
+            //               Department = d,
+            //               Employees = EmployeesGroup
+            //           } into groups
+            //           select groups.Department;
+
+
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Department.DeptName);
+            //    foreach (var emp in item.Employees)
+            //    {
+            //        Console.WriteLine($"---------{emp.EmpName}");
+            //    }
+
+            //}
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.DeptName);
+            //} 
+            #endregion
+
+            #region Exampel 02
+            //var result=dbcontext.Departments.GroupJoin(dbcontext.Employees, d => d.DeptId, e => e.DepartmentId,
+            //    (d, Employees) => new
+            //    {
+            //        Department = d,
+            //        Employees
+
+            //    }).SelectMany(r=>r.Employees);
+
+            //foreach(var item in result)
+            //    Console.WriteLine(item.EmpName); 
+            #endregion
+
+            #region Exambel 03
+            //var result = dbcontext.Departments.GroupJoin(dbcontext.Employees, d => d.DeptId, e => e.DepartmentId,
+            //     (d, Employees) => new
+            //     {
+            //         Department = d,
+            //         Employees
+
+            //     }).SelectMany(r => r.Employees.DefaultIfEmpty(),
+            //     (R,Employee)=>new
+            //     { 
+            //         DepartmentID=R.Department.DeptId,
+            //         DepartmentName=R.Department.DeptName,
+            //         EmployeeName=Employee !=null ?Employee.EmpName:"No Employee",
+
+
+
+            //     });
+            // foreach(var item in result)
+            //     Console.WriteLine(item);
+            #endregion
+
+            #endregion
+
+            #region Employess Leftr Outer Join with Department
+            //var result = dbcontext.Employees.GroupJoin(dbcontext.Departments, e => e.DepartmentId, d => d.DeptId,
+            //    (e, Departments) => new
+            //    {
+            //        Employee=e,
+            //        Departments
+            //    }).SelectMany(R=>R.Departments.DefaultIfEmpty(), (R,Department)=>
+            //    new
+            //    {
+            //        EmpId=R.Employee.ÈmpId,
+            //        EmpName=R.Employee.EmpName,
+            //        DeptId= Department !=null ? Department.DeptId:0,
+            //        DeptName=Department !=null ? Department.DeptName :"No Department"
+            //    });
+
+            //foreach(var item in result)
+            //    Console.WriteLine(item);
+            
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine($"{item.Employee.EmpName}");
+            //    foreach (var Dept in item.Departments)
+            //    {
+            //        Console.WriteLine($"----------{Dept.DeptName}");
+            //    }
+            //}
+            #endregion
+
 
             #endregion
 
