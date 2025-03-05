@@ -201,12 +201,67 @@ namespace Demo03
             //foreach (var item in result)
             //    Console.WriteLine(item);
 
-                                    
 
+
+
+            #endregion
+
+            #endregion
+
+            #region Group Join () -Left Outer Join
+            #region Exambel01
+            //var result = dbcontext.Departments.GroupJoin(dbcontext.Employees,
+            //    d => d.DeptId,
+            //    e => e.DepartmentId
+            //    , (d, employees) => new { Department = d, employees });
+
+            //var  result = from Dept in dbcontext.Departments
+            //          join Emp in dbcontext.Employees
+            //          on Dept.DeptId equals Emp.DepartmentId into Groups
+            //          select new
+            //          {
+            //              Department = Dept,
+            //              Employees = Groups
+            //          };
+            // foreach (var item in result)
+            // {
+            //     Console.WriteLine($"DepartmentId={item.Department.DeptId} - DepartmentName={item.Department.DeptName}");
+            //     foreach (var emp in item.Employees)
+            //     {
+            //         Console.WriteLine($"==========={emp.EmpName}");
+            //     }
+            // } 
+            #endregion
+
+            #region Exambel 02
+
+            //var result = dbcontext.Departments.GroupJoin(dbcontext.Employees,
+            //    d => d.DeptId,
+            //    e => e.DepartmentId
+            //    , (d, Employees) => new { Department = d, Employees })
+            //    .Where(r=>r.Employees.Count()>2);
+
+            ////var  result = from Dept in dbcontext.Departments
+            ////          join Emp in dbcontext.Employees
+            ////          on Dept.DeptId equals Emp.DepartmentId into Groups
+            ////          select new
+            ////          {
+            ////              Department = Dept,
+            ////              Employees = Groups
+            ////          };
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine($"DepartmentId={item.Department.DeptId} - DepartmentName={item.Department.DeptName}");
+            //    foreach (var emp in item.Employees)
+            //    {
+            //        Console.WriteLine($"==========={emp.EmpName}");
+            //    }
+            //}
 
             #endregion
 
             #endregion
+
 
             #endregion
         }
