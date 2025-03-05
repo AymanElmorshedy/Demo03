@@ -12,8 +12,11 @@ namespace Demo03.Dbcontexts
     {
         public DbSet<Employee>  Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
             optionsBuilder.UseSqlServer("Server=.;Database=Demo;Trusted_Connection=true;TrustServerCertificate=true");
+            optionsBuilder.UseLazyLoadingProxies();
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>()

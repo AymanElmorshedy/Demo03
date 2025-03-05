@@ -130,6 +130,29 @@ namespace Demo03
             #endregion
             #endregion
 
+            #region Lazy-Loading
+            //var emp01 = dbcontext.Employees.FirstOrDefault(e => e.ÈmpId == 1);
+
+            //if (emp01 is not null)
+            //{
+            //    Console.WriteLine($"Employee Name : {emp01.EmpName}");
+            //    Console.WriteLine($"Department Id Name : {emp01.DepartmentId}");
+            //    Console.WriteLine($"Department Name : {emp01.EmployeeDepartment?.DeptName}");//Related Data
+
+                
+            //}
+
+            var Dep01=dbcontext.Departments.FirstOrDefault(d=>d.DeptId==1);
+            if (Dep01 is not null)
+            {
+                Console.WriteLine(Dep01.DeptName);
+                Console.WriteLine(Dep01.DateOfCreation);
+
+                foreach(var emp in Dep01.Employees)
+                    Console.WriteLine($"---------{emp.EmpName}");
+            }
+            #endregion
+
             #endregion
         }
     }

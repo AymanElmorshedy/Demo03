@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
+
 
 namespace Demo03.Models
 {
@@ -21,9 +24,9 @@ namespace Demo03.Models
         public string? Password { get; set; }
         public Address EmpAddress { get; set; }
         [InverseProperty(nameof(Department.Manager))]
-        public Department? ManegedDepartment { get; set; }
+        public virtual Department? ManegedDepartment { get; set; }
         [InverseProperty(nameof(Department.Employees))]
-        public Department EmployeeDepartment { get; set; }
+        public virtual Department EmployeeDepartment { get; set; }
         [ForeignKey(nameof(EmployeeDepartment))]
         public int DepartmentId { get; set; }
     }
